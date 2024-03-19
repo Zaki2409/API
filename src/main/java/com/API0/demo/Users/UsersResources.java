@@ -1,12 +1,15 @@
 package com.API0.demo.Users;
 
+import java.net.URI;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class UsersResources {
@@ -27,7 +30,14 @@ public class UsersResources {
 	}
 	
 	@PostMapping(path="/users")
-	public Users createuser(@RequestBody Users user) {
-		return service.save(user);			
+	public ResponseEntity<Object> createuser(@RequestBody Users user) {
+		Users saved = service.save(user);
+		URI location =ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(saved.getId())
+				.toUri();
+		
+		return ResponseEntity.created(location).build();
 	}
+	
 } 
