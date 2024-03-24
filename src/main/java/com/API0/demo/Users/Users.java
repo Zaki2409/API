@@ -1,6 +1,7 @@
 package com.API0.demo.Users;
 
 import java.time.LocalDate;
+import java.util.function.Predicate;
 
 public class Users {
 	 private Integer id;
@@ -34,6 +35,9 @@ public class Users {
 	public String toString() {
 		return "Users [id=" + id + ", name=" + name + ", birthday=" + birthday + "]";
 	}
-	 
-	 
+	  static void removeIf(Predicate<? super Users> predicate) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
