@@ -1,19 +1,23 @@
 package com.API1.demo1.service;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.API1.demo1.Model.Student;
 
 
+
+
 @Service
 public class StudentserviceImpl implements Studentservice {
-
-	private static List<Student> hardcodelist = new ArrayList<> () ;
+	@Autowired
+	 private stdrepo stdr;
+	//private static List<Student> hardcodelist = new ArrayList<> () ;
 	
-	static {
+	/*static {
 		Student s = new Student();
 		s.setName("Mohammed");
 		s.setId(526);
@@ -32,12 +36,12 @@ public class StudentserviceImpl implements Studentservice {
 		s1.setLocation("secunderabad");
 		hardcodelist.add(s1);
 		
-	}
+	}*/
 	
 	@Override
 	public List<Student> getstddetails() {
 		// TODO Auto-generated method stub
-		return hardcodelist;
+		return stdr.findAll();
 	}
 
 }
