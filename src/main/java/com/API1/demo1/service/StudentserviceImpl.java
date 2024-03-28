@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.API1.demo1.Model.Student;
+import com.API1.demo1.repository.stdrepo;
 
 
 
